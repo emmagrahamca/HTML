@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Dashboard</title>
+</head>
+<body>
+
+<button onclick="runFlow()">Run Power Automate</button>
+
+<script>
+function runFlow() {
+    fetch("https://defaulta6a78d6c799a43ba821ad5a1f5f0f7.67.environment.api.powerplatform.com/powerautomate/automations/direct/workflows/577d3f2ea5e14485b6dae8945589a6d3/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Ko6HncrzXEGbutyG28K4o8W3CE_Okp9qTVV4rqIwHzM", {
+        method: "POST"
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Flow ran successfully!");
+        } else {
+            alert("Something went wrong.");
+        }
+    })
+    .catch(err => {
+        console.error(err);
+        alert("Error triggering flow.");
+    });
+}
+</script>
+
+</body>
+</html>
